@@ -322,6 +322,37 @@ socket.on("screen-stopped", () => {
 // Auto-enter from a ?room=XXXX link.
 const params = new URLSearchParams(location.search);
 const inviteRoom = params.get("room");
+// ---------------- Tela cheia do compartilhamento ----------------
+
+const fullscreenScreenBtn = $("fullscreenScreenBtn");
+
+if (fullscreenScreenBtn) {
+  fullscreenScreenBtn.onclick = async () => {
+    const screenArea = $("screenArea");
+
+    try {
+      if (!document.fullscreenElement) {
+        await screenArea.requestFullscreen();
+        fullscreenScreenBtn.textContent = "Sair da tela cheia";
+      } else {
+        await document.exitFullscreen();
+        fullscreenScreenBtn.textContent = "Tela cheia";
+      }
+    } catch (err) {
+      console.error("Erro ao entrar em tela cheia:", err);
+    }
+  };
+}
+
+document.addEventListener("fullscreenchange", () => {
+  if (!fullscreenScreenBtn) return;
+
+  if (document.fullscreenElement) {
+    fullscreenScreenBtn.textContent = "Sair da tela cheia";
+  } else {
+    fullscreenScreenBtn.textContent = "Tela cheia";
+  }
+});
 if (inviteRoom) {
   $("roomCode").value = inviteRoom.toUpperCase();
   showNameModal({ type: "join", code: inviteRoom.toUpperCase() });
