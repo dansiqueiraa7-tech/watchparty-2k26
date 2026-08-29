@@ -9,7 +9,6 @@
 </head>
 <body>
   <div class="page-bg"></div>
-
   <header class="nav">
     <a class="brand" href="/">
       <span class="brand-icon">▶</span>
@@ -95,7 +94,24 @@
     <button id="stopScreenBtn" type="button">Parar</button>
   </div>
 </div>
-          <video id="screenVideo" autoplay playsinline controls></video>
+          <div class="screen-video-wrapper">
+    <video id="screenVideo" autoplay playsinline></video>
+
+    <div class="screen-controls">
+        <button id="screenMuteBtn" type="button">🔊</button>
+
+        <input
+            id="screenVolume"
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value="1"
+        >
+
+        <button id="screenFullscreenBtn" type="button">⛶</button>
+    </div>
+</div>
         </div>
       </div>
 
