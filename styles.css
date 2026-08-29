@@ -265,7 +265,71 @@ footer{position:relative;z-index:1;text-align:center;color:#888;padding:55px 20p
   max-height: 100vh;
   object-fit: contain;
 }
+/* CONTROLES DA TRANSMISSÃO */
+.screen-video-wrapper {
+    position: relative !important;
+    width: 100%;
+    background: #000;
+}
 
+.screen-video-wrapper #screenVideo {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    max-height: 70vh;
+    object-fit: contain;
+    background: #000;
+}
+
+.screen-video-wrapper .screen-controls {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 9999 !important;
+
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
+
+    height: 55px;
+    padding: 8px 14px;
+    box-sizing: border-box;
+
+    background: linear-gradient(
+        transparent,
+        rgba(0, 0, 0, 0.9)
+    );
+}
+
+.screen-video-wrapper .screen-controls button {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 36px;
+
+    border: 0;
+    border-radius: 7px;
+
+    background: rgba(20, 20, 20, 0.9);
+    color: #fff;
+
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.screen-video-wrapper .screen-controls input {
+    display: block !important;
+    width: 110px;
+}
+
+#screenFullscreenBtn {
+    display: flex !important;
+    margin-left: auto;
+}
 .screen-video-wrapper:fullscreen .screen-controls {
   bottom: 0;
 }
