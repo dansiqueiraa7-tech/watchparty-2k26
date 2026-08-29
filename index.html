@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WatchParty 2K26 - assista junto em tempo real.">
+  <title>WatchParty 2K26</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="page-bg"></div>
+
+  <header class="nav">
+    <a class="brand" href="/">
+      <span class="brand-icon">▶</span>
+      <span>WatchParty <small>LIVE</small></span>
+    </a>
+    <nav>
+      <a class="active" href="/">Início</a>
+      <a href="#features">Como funciona</a>
+      <a href="#privacy">Privacidade</a>
+    </nav>
+    <button class="outline-btn" id="navEnter">Entrar</button>
+  </header>
+
+  <main id="home" class="home">
+    <section class="hero">
+      <div class="eyebrow">⚡ Assista junto. Em tempo real.</div>
+      <h1>Watch Party<br>com seus <span>amigos</span></h1>
+      <p>Crie uma sala, convide seus amigos e assistam vídeos juntos com chat em tempo real.</p>
+
+      <div class="actions">
+        <div class="action-card featured">
+          <div class="action-icon">＋</div>
+          <h2>Criar sala</h2>
+          <p>Crie uma nova sala<br>e convide seus amigos</p>
+          <button class="primary-btn" id="createBtn">Criar sala</button>
+        </div>
+
+        <div class="action-card">
+          <div class="action-icon link">↗</div>
+          <h2>Entrar em uma sala</h2>
+          <p>Digite o código da sala<br>para entrar</p>
+          <div class="join-row">
+            <input id="roomCode" maxlength="6" placeholder="Código da sala" autocomplete="off">
+            <button class="square-btn" id="joinBtn">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-strip" id="features">
+      <div><b>♧</b><strong>Sincronizado</strong><span>Vídeo sincronizado para todos</span></div>
+      <div><b>◯</b><strong>Chat em tempo real</strong><span>Converse com todos na sala</span></div>
+      <div><b>▣</b><strong>Compartilhe tela</strong><span>Assista qualquer coisa juntos</span></div>
+      <div><b>⌾</b><strong>Salas privadas</strong><span>Suas salas são seguras e privadas</span></div>
+    </section>
+  </main>
+
+  <main id="room" class="room hidden">
+    <section class="room-top">
+      <div>
+        <div class="eyebrow">● Sala ativa</div>
+        <h1>Sala <span id="roomCodeLabel">------</span></h1>
+      </div>
+      <div class="room-actions">
+        <button class="outline-btn" id="copyBtn">Copiar convite</button>
+        <button class="outline-btn danger" id="leaveBtn">Sair</button>
+      </div>
+    </section>
+
+    <section class="room-grid">
+      <div class="watch-area">
+        <div class="video-shell">
+          <video id="video" controls playsinline></video>
+          <div id="videoEmpty" class="video-empty">
+            <div class="big-play">▶</div>
+            <h2>Nenhum vídeo carregado</h2>
+            <p>Cole abaixo o endereço direto de um vídeo MP4/WebM.</p>
+          </div>
+        </div>
+
+        <div class="video-tools">
+          <input id="videoUrl" placeholder="URL direta do vídeo (MP4, WebM...)">
+          <button class="primary-btn compact" id="loadVideoBtn">Carregar vídeo</button>
+          <button class="outline-btn compact" id="screenBtn">Compartilhar tela</button>
+        </div>
+
+        <div class="screen-area hidden" id="screenArea">
+          <div class="screen-header"><strong>Compartilhamento de tela</strong><button id="stopScreenBtn">Parar</button></div>
+          <video id="screenVideo" autoplay playsinline></video>
+        </div>
+      </div>
+
+      <aside class="side-panel">
+        <div class="panel-tabs">
+          <button class="tab active">Chat</button>
+          <button class="tab">Pessoas <span id="userCount">0</span></button>
+        </div>
+        <div id="chatMessages" class="chat-messages"></div>
+        <div class="people hidden" id="people"></div>
+        <form id="chatForm" class="chat-form">
+          <input id="chatInput" maxlength="500" placeholder="Digite uma mensagem..." autocomplete="off">
+          <button>➤</button>
+        </form>
+      </aside>
+    </section>
+  </main>
+
+  <div id="nameModal" class="modal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModal">×</button>
+      <div class="eyebrow">👋 Bem-vindo</div>
+      <h2>Como podemos te chamar?</h2>
+      <p>Escolha um nome para aparecer na sala.</p>
+      <input id="nameInput" maxlength="30" placeholder="Seu nome" autocomplete="name">
+      <button class="primary-btn" id="confirmName">Continuar</button>
+      <div id="modalError" class="error"></div>
+    </div>
+  </div>
+
+  <footer id="privacy">© 2026 WatchParty 2K26. Feito para assistir junto.</footer>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
