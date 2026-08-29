@@ -9,7 +9,7 @@ body{margin:0;min-height:100vh;background:#050505;color:#fff}
 button,input{font:inherit}
 button{cursor:pointer}
 .page-bg{
-  position:fixed;inset:0;z-index:0;background:#000 url("/assets/banner.png") right 32px center / min(72vw,1100px) auto no-repeat;
+  position:fixed;inset:0;z-index:0;background:#000 url("assets/banner.png") right 32px center / min(72vw,1100px) auto no-repeat;
   opacity:.92;pointer-events:none
 }
 .page-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.15),rgba(0,0,0,.08)),linear-gradient(0deg,rgba(0,0,0,.2),transparent 45%)
