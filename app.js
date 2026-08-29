@@ -232,3 +232,54 @@ if (inviteRoom) {
   $("roomCode").value = inviteRoom.toUpperCase();
   showNameModal({ type: "join", code: inviteRoom.toUpperCase() });
 }
+// ==========================================
+// CONTROLES DO VÍDEO COMPARTILHADO
+// ==========================================
+
+const screenVideo = document.getElementById("screenVideo");
+const screenVolume = document.getElementById("screenVolume");
+const screenMuteBtn = document.getElementById("screenMuteBtn");
+const screenFullscreenBtn = document.getElementById("screenFullscreenBtn");
+const screenVideoWrapper = document.querySelector(".screen-video-wrapper");
+
+// Volume
+if (screenVideo && screenVolume) {
+    screenVolume.addEventListener("input", () => {
+        screenVideo.volume = Number(screenVolume.value);
+
+        if (screenVideo.volume === 0) {
+            screenMuteBtn.textContent = "🔇";
+        } else {
+            screenMuteBtn.textContent = "🔊";
+        }
+    });
+}
+
+// Mudo / som
+if (screenVideo && screenMuteBtn) {
+    screenMuteBtn.addEventListener("click", () => {
+        screenVideo.muted = !screenVideo.muted;
+
+        if (screenVideo.muted) {
+            screenMuteBtn.textContent = "🔇";
+        } else {
+            screenMuteBtn.textContent = "🔊";
+            screenVideo.volume = Number(screenVolume.value);
+        }
+    });
+}
+
+// Tela cheia
+if (screenVideo && screenFullscreenBtn && screenVideoWrapper) {
+    screenFullscreenBtn.addEventListener("click", async () => {
+        try {
+            if (!document.fullscreenElement) {
+                await screenVideoWrapper.requestFullscreen();
+            } else {
+                await document.exitFullscreen();
+            }
+        } catch (error) {
+            console.error("Erro ao abrir tela cheia:", error);
+        }
+    });
+}
