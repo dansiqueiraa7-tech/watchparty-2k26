@@ -143,3 +143,51 @@ footer{position:relative;z-index:1;text-align:center;color:#888;padding:55px 20p
   object-fit: contain;
   background: #000;
 }
+/* ===== CORREÇÃO DA TELA COMPARTILHADA ===== */
+
+.screen-area {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  border: 1px solid #292929;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000;
+}
+
+.screen-area.hidden {
+  display: none !important;
+}
+
+.screen-header {
+  min-height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  border-bottom: 1px solid #292929;
+  background: #0b0b0b;
+}
+
+.screen-header strong {
+  color: #fff;
+}
+
+.screen-header button {
+  background: none;
+  border: 1px solid #444;
+  color: #fff;
+  border-radius: 7px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#screenVideo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  min-height: 200px;
+  object-fit: contain;
+  background: #000;
+}
